@@ -3,12 +3,26 @@
  */
 package com.tsb;
 
+import com.tsb.entity.Player;
+import com.tsb.util.SessionFactoryHolder;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
+        try {
+            SessionFactory sessionFactory = SessionFactoryHolder.get();
+            Session session = sessionFactory.getCurrentSession();
+            Player player = new Player("Иван");
+            session.persist(player);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         System.out.println(new App().getGreeting());
     }
 }
