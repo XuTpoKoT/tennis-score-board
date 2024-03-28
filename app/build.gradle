@@ -1,37 +1,37 @@
-plugins {
-    id 'application'
-    id 'org.liquibase.gradle' version '2.2.0'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.flywaydb:flyway-database-postgresql:10.4.1'
+    }
 }
 
+plugins {
+    id 'application'
+    id "org.flywaydb.flyway" version "10.4.1"
+}
 repositories {
     mavenCentral()
 }
-
 dependencies {
-    liquibaseRuntime 'org.liquibase:liquibase-core:4.24.0'
-    liquibaseRuntime 'info.picocli:picocli:4.7.5'
-    liquibaseRuntime 'org.postgresql:postgresql:42.7.2'
-    liquibaseRuntime 'org.yaml:snakeyaml:2.2'
-
     implementation 'org.hibernate.orm:hibernate-core:6.1.7.Final'
     implementation 'org.postgresql:postgresql:42.7.2'
     implementation 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
-
-liquibase {
-    activities {
-        main{
-            changelogFile "$projectDir/src/main/resources/db/changelog.yml"
-            url "jdbc:postgresql://localhost:5432/tsb_db"
-            username "dev_user"
-            password "dev_pass"
-        }
-    }
+flyway {
+    cleanDisabled = false
+    url = 'jdbc:postgresql://localhost:5432/tsb_db'
+    user = 'dev_user'
+    password = 'dev_pass'
+    locations = ['classpath:migration']
 }
-
+flywayMigrate.dependsOn classes
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
