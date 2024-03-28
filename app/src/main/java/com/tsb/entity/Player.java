@@ -1,23 +1,16 @@
 package com.tsb.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-
-@Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Player {
-    @Id @GeneratedValue(strategy=IDENTITY)
+    @Id
     @Getter
-    @Setter
-    private Long id;
-
-    public Player(Long id) {
-        this.id = id;
-    }
+    private String name;
 }
