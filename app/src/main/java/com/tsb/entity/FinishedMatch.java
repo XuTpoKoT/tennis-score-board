@@ -1,14 +1,17 @@
 package com.tsb.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
-public class Match {
+@Getter
+public class FinishedMatch {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private UUID id;
 
     @ManyToOne()
     @JoinColumn(name = "player_1", nullable = false)
@@ -21,4 +24,10 @@ public class Match {
     @ManyToOne()
     @JoinColumn(name = "winner", nullable = false)
     private Player winner;
+
+    public FinishedMatch(Player player1, Player player2, Player winner) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.winner = winner;
+    }
 }
