@@ -16,9 +16,15 @@ repositories {
     mavenCentral()
 }
 dependencies {
+    apply plugin: 'war'
+
     implementation 'org.hibernate.orm:hibernate-core:6.1.7.Final'
     implementation 'org.postgresql:postgresql:42.7.2'
     implementation 'org.projectlombok:lombok:1.18.28'
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'javax.servlet:jstl:1.2'
+
+
     annotationProcessor 'org.projectlombok:lombok:1.18.28'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
@@ -36,10 +42,6 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
-}
-
-application {
-    mainClass = 'com.tsb.App'
 }
 
 tasks.named('test') {

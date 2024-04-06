@@ -1,0 +1,156 @@
+.main {
+	position: relative;
+	display: flex;
+	padding-top: 150px;
+}
+
+.main-menu {
+	flex: 1;
+	padding: 0 15% 0 15%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.text-menu {
+	font-size: 3em;
+	font-weight: bold;
+	padding-bottom: 40px;
+}
+
+.tie-break {
+	font-size: 2em;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+.nav-main {
+	width: 100%;
+}
+
+.nav-item-main  {
+	font-size: 2em;
+	text-decoration-line: none;
+	color: black;
+	cursor: pointer;
+	background-color: white;
+	transition: background-color 0.25s, opacity 0.25s;
+}
+
+.nav-item-main:hover {
+	background-color: black;
+	color: white;
+	opacity: 0.85;
+}
+
+.nav-item-main:active {
+	opacity: 0.65;
+}
+
+.class-form form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.match-form-label {
+	font-size: 2em;
+	display: flex;
+}
+
+.match-form-input-fio {
+	width: 300px;
+	/*color: gray;*/
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 5px 0 5px 10px;
+	font-size: 0.8em;
+	margin-left: 10px;
+	flex: 1;
+}
+
+.btn {
+	background-color: black;
+	color: white;
+	font-size: 1.2em;
+	border: none;
+	cursor: pointer;
+	padding: 10px 15px 10px 15px;
+	transition: background-color 0.15s, opacity 0.15s, color 0.15s, border 0.15s;
+}
+
+.form-width {
+	width: 100px;
+}
+
+.form-height {
+	height: 50px;
+}
+
+.form-right {
+	text-align: right;
+}
+
+.form-left {
+	text-align: left;
+}
+
+.btn:hover {
+	opacity: 0.85;
+	background-color: rgba(255, 255, 255, 0.68);
+	color: black;
+	border: 1px solid black;
+}
+
+.pages {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.pages a {
+	font-size: 1.3em;
+	color: black;
+	padding-right: 12px;
+	padding-top: 15px;
+}
+
+.find_player form {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-input {
+	font-size: 1.5em;
+	margin-right: 15px;
+}
+
+.errors {
+	font-size: 1.5em;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	width: 100%;
+	align-items: start;
+}
+
+.back {
+	padding-top: 12px;
+	width: 90px;
+}
+
+.tm {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	padding-right: 100px;
+}

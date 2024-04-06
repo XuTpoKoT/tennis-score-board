@@ -18,7 +18,7 @@ public class OngoingMatch {
         this.score = new MatchScore();
     }
 
-    public void pointWon(PlayerNumber playerNumber) {
+    public void aceWon(PlayerNumber playerNumber) {
         score.aceWon(playerNumber);
     }
 

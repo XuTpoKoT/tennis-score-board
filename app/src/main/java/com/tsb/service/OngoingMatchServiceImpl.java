@@ -5,6 +5,8 @@ import com.tsb.model.OngoingMatch;
 import com.tsb.model.PlayerNumber;
 import com.tsb.repo.PlayerRepo;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -24,18 +26,22 @@ public class OngoingMatchServiceImpl implements OngoingMatchService {
     }
 
     @Override
-    public void pointWon(UUID matchId, PlayerNumber playerNumber) {
+    public void aceWon(UUID matchId, PlayerNumber playerNumber) {
         var match = matchMap.get(matchId);
-        match.pointWon(playerNumber);
+        match.aceWon(playerNumber);
     }
 
     @Override
-    public OngoingMatch getMatch(UUID matchId) {
+    public OngoingMatch findById(UUID matchId) {
         return matchMap.get(matchId);
     }
 
-
     public void removeMatch(UUID matchId) {
         matchMap.remove(matchId);
+    }
+
+    @Override
+    public Collection<OngoingMatch> findAll() {
+        return matchMap.values();
     }
 }
