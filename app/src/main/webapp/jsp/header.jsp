@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +23,7 @@
             <a class="nav-item" href="${pageContext.request.contextPath}/">Главная</a>
             <a class="nav-item" href="${pageContext.request.contextPath}/new-match">Новый матч</a>
             <a class="nav-item" href="${pageContext.request.contextPath}/matches">Завершенные матчи</a>
-            <a class="nav-item" href="${pageContext.request.contextPath}/unfinished-matches">Идущие матчи</a>
+            <a class="nav-item" href="${pageContext.request.contextPath}/ongoing-matches">Идущие матчи</a>
         </div>
     </div>
+<!-- END HEADER -->

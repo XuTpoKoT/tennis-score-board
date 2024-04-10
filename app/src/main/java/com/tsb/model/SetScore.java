@@ -1,5 +1,10 @@
 package com.tsb.model;
 
+import java.util.List;
+
+import static com.tsb.model.PlayerNumber.PLAYER_1;
+import static com.tsb.model.PlayerNumber.PLAYER_2;
+
 public class SetScore extends Score {
     public final static int DEFAULT_GAMES_TO_WIN = 6;
     public final static int POINTS_TO_WIN_TIME_BREAK_GAME = 7;
@@ -30,6 +35,14 @@ public class SetScore extends Score {
                 curGameScore = new GameScore();
             }
         }
+    }
+
+    public List<String> getDisplayName() {
+        return List.of(playerPointsMap.get(PLAYER_1).toString(), playerPointsMap.get(PLAYER_2).toString());
+    }
+
+    public List<String> getGameScoreDisplayName() {
+        return curGameScore.getDisplayName();
     }
 
     @Override

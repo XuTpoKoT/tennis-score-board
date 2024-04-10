@@ -1,5 +1,10 @@
 package com.tsb.model;
 
+import java.util.List;
+
+import static com.tsb.model.PlayerNumber.PLAYER_1;
+import static com.tsb.model.PlayerNumber.PLAYER_2;
+
 public class MatchScore extends Score {
     public final static int DEFAULT_SETS_TO_WIN = 2;
     private SetScore curSetScore = new SetScore();
@@ -9,14 +14,26 @@ public class MatchScore extends Score {
         curSetScore.aceWon(playerNumber);
         if (curSetScore.isWinning()) {
             addPoint(playerNumber);
-            int player1Points = playerPointsMap.get(PlayerNumber.PLAYER_1);
-            int player2Points = playerPointsMap.get(PlayerNumber.PLAYER_2);
+            int player1Points = playerPointsMap.get(PLAYER_1);
+            int player2Points = playerPointsMap.get(PLAYER_2);
             if (isWinning(player1Points, player2Points)) {
                 isWinning = true;
             } else  {
                 curSetScore = new SetScore();
             }
         }
+    }
+
+    public List<String> getMatchScoreDisplayName() {
+        return List.of(playerPointsMap.get(PLAYER_1).toString(), playerPointsMap.get(PLAYER_2).toString());
+    }
+
+    public List<String> getSetScoreDisplayName() {
+        return curSetScore.getDisplayName();
+    }
+
+    public List<String> getGameScoreDisplayName() {
+        return curSetScore.getGameScoreDisplayName();
     }
 
     @Override
