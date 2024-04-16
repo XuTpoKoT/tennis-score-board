@@ -1,5 +1,7 @@
 package com.tsb.model;
 
+import com.tsb.exception.MatchIsNotFinishedException;
+
 import java.util.List;
 
 import static com.tsb.model.PlayerNumber.PLAYER_1;
@@ -35,6 +37,15 @@ public class MatchScore extends Score {
     public List<String> getGameScoreDisplayName() {
         return curSetScore.getGameScoreDisplayName();
     }
+//    public PlayerNumber getWinner() {
+//        if (!isWinning) {
+//            throw new MatchIsNotFinishedException("Match is not finished!");
+//        }
+//        if (playerPointsMap.get(PLAYER_1) > playerPointsMap.get(PLAYER_2)) {
+//            return PLAYER_1;
+//        }
+//        return PLAYER_2;
+//    }
 
     @Override
     protected boolean isWinning(int player1Points, int player2Points) {

@@ -7,12 +7,12 @@ import com.tsb.service.OngoingMatchService;
 import com.tsb.service.OngoingMatchServiceImpl;
 import com.tsb.util.JspPath;
 import com.tsb.util.ValidParameter;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -20,6 +20,7 @@ import java.util.UUID;
 @WebServlet(urlPatterns = "/match-score")
 public class MatchScoreController extends HttpServlet {
     private final OngoingMatchService ongoingMatchService = OngoingMatchServiceImpl.INSTANCE;
+    //private final FinishedMatchService finishedMatchService = FinishedMatchServiceImpl.INSTANCE;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,8 +40,13 @@ public class MatchScoreController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         UUID matchId = UUID.fromString(req.getParameter("id"));
         PlayerNumber playerNumber = PlayerNumber.valueOf(req.getParameter("player"));
-        System.out.println(req.getParameter("player"));
         ongoingMatchService.aceWon(matchId, playerNumber);
+//        OngoingMatch ongoingMatch = ongoingMatchService.findById(matchId);
+//        if (ongoingMatch.isFinished()) {
+//            FinishedMatch finishedMatch = FinishedMatch.fromOngoingMatch(ongoingMatch);
+//            finishedMatchService.save(finishedMatch);
+//            resp.sendRedirect(String.format("%s/", req.getContextPath()));
+//        }
         resp.sendRedirect(String.format("%s/match-score?id=%s", req.getContextPath(), matchId));
     }
 }

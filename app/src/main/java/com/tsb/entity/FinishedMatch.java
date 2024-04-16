@@ -1,5 +1,6 @@
 package com.tsb.entity;
 
+import com.tsb.model.OngoingMatch;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -33,4 +34,8 @@ public class FinishedMatch {
         this.player2 = player2;
         this.winner = winner;
     }
+
+//    public static FinishedMatch fromOngoingMatch(OngoingMatch ongoingMatch) {
+//        return new FinishedMatch(ongoingMatch.getPlayer1(), ongoingMatch.getPlayer2(), ongoingMatch.getWinner());
+//    }
 }

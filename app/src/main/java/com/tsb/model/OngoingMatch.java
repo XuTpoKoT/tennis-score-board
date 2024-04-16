@@ -3,14 +3,13 @@ package com.tsb.model;
 import com.tsb.entity.Player;
 import lombok.Getter;
 
-
 @Getter
 public class OngoingMatch {
 
-    private Player player1;
+    private final Player player1;
 
-    private Player player2;
-    private MatchScore score;
+    private final Player player2;
+    private final MatchScore score;
 
     public OngoingMatch(Player player1, Player player2) {
         this.player1 = player1;
@@ -26,13 +25,10 @@ public class OngoingMatch {
         return score.isWinning();
     }
 
-//    public Integer getWinner() {
-//        if (!this.isFinished()) {
-//            throw new MatchIsNotFinishedException("Match is not finished!");
-//        }
-//        switch (score.getWinner()) {
-//            PLAYER_1:
-//
-//        }
+//    public Player getWinner() {
+//        return switch (score.getWinner()) {
+//            case PLAYER_1 -> player1;
+//            case PLAYER_2 -> player2;
+//        };
 //    }
 }

@@ -2,22 +2,11 @@ package com.tsb.util;
 
 import com.tsb.exception.BadRequestException;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Objects;
 import java.util.UUID;
 
 public class ValidParameter {
-
-    public static Integer getValidNumber(HttpServletRequest req, String parameter) {
-        if (Objects.isNull(req.getParameter(parameter))) {
-            throw new BadRequestException("Не задан параметр " + parameter);
-        }
-        try {
-            return Integer.parseInt(req.getParameter(parameter));
-        } catch (Exception e) {
-            throw new BadRequestException("Не валидный параметр " + parameter + ": " + req.getParameter(parameter));
-        }
-    }
 
     public static String getValidPlayerName(HttpServletRequest req, String parameter) {
         String name = req.getParameter(parameter);

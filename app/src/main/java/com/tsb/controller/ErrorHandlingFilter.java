@@ -1,12 +1,12 @@
 package com.tsb.controller;
 
 import com.tsb.util.JspPath;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.java.Log;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter("/*")
@@ -34,4 +34,7 @@ public class ErrorHandlingFilter implements Filter {
             dispatcher.forward(httpRequest, httpResponse);
         }
     }
+
+    @Override
+    public void destroy() {}
 }
