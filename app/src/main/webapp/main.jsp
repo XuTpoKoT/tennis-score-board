@@ -4,7 +4,7 @@
     <div class="main">
         <div class="main-menu">
             <div class="text-menu">
-                Главное ме
+                Главное меню
             </div>
         </div>
     </div>

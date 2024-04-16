@@ -20,7 +20,7 @@
         </div>
 
         <div class="nav">
-            <a class="nav-item" href="${pageContext.request.contextPath}/">Главная</a>
+            <a class="nav-item" href="${pageContext.request.contextPath}/main">Главная</a>
             <a class="nav-item" href="${pageContext.request.contextPath}/new-match">Новый матч</a>
             <a class="nav-item" href="${pageContext.request.contextPath}/matches">Завершенные матчи</a>
             <a class="nav-item" href="${pageContext.request.contextPath}/ongoing-matches">Идущие матчи</a>

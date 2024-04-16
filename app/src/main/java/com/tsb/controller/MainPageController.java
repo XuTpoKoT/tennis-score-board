@@ -11,7 +11,7 @@ import lombok.extern.java.Log;
 
 import java.io.IOException;
 
-@WebServlet("/")
+@WebServlet("/main")
 @Log
 public class MainPageController extends HttpServlet {
     @Override
