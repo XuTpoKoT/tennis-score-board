@@ -1,10 +1,7 @@
 package com.tsb.entity;
 
 import com.tsb.model.OngoingMatch;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,8 +10,9 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @Getter
+@Table(name = "Match", schema = "public")
 public class FinishedMatch {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne()
@@ -35,7 +33,7 @@ public class FinishedMatch {
         this.winner = winner;
     }
 
-//    public static FinishedMatch fromOngoingMatch(OngoingMatch ongoingMatch) {
-//        return new FinishedMatch(ongoingMatch.getPlayer1(), ongoingMatch.getPlayer2(), ongoingMatch.getWinner());
-//    }
+    public static FinishedMatch fromOngoingMatch(OngoingMatch ongoingMatch) {
+        return new FinishedMatch(ongoingMatch.getPlayer1(), ongoingMatch.getPlayer2(), ongoingMatch.getWinner());
+    }
 }

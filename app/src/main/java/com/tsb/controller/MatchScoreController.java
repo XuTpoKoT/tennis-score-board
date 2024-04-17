@@ -1,8 +1,11 @@
 package com.tsb.controller;
 
+import com.tsb.entity.FinishedMatch;
 import com.tsb.model.MatchScore;
 import com.tsb.model.OngoingMatch;
 import com.tsb.model.PlayerNumber;
+import com.tsb.service.FinishedMatchService;
+import com.tsb.service.FinishedMatchServiceImpl;
 import com.tsb.service.OngoingMatchService;
 import com.tsb.service.OngoingMatchServiceImpl;
 import com.tsb.util.JspPath;
@@ -20,7 +23,7 @@ import java.util.UUID;
 @WebServlet(urlPatterns = "/match-score")
 public class MatchScoreController extends HttpServlet {
     private final OngoingMatchService ongoingMatchService = OngoingMatchServiceImpl.INSTANCE;
-    //private final FinishedMatchService finishedMatchService = FinishedMatchServiceImpl.INSTANCE;
+    private final FinishedMatchService finishedMatchService = FinishedMatchServiceImpl.INSTANCE;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,12 +44,14 @@ public class MatchScoreController extends HttpServlet {
         UUID matchId = UUID.fromString(req.getParameter("id"));
         PlayerNumber playerNumber = PlayerNumber.valueOf(req.getParameter("player"));
         ongoingMatchService.aceWon(matchId, playerNumber);
-//        OngoingMatch ongoingMatch = ongoingMatchService.findById(matchId);
-//        if (ongoingMatch.isFinished()) {
-//            FinishedMatch finishedMatch = FinishedMatch.fromOngoingMatch(ongoingMatch);
-//            finishedMatchService.save(finishedMatch);
-//            resp.sendRedirect(String.format("%s/", req.getContextPath()));
-//        }
-        resp.sendRedirect(String.format("%s/match-score?id=%s", req.getContextPath(), matchId));
+        OngoingMatch ongoingMatch = ongoingMatchService.findById(matchId);
+        if (ongoingMatch.isFinished()) {
+            FinishedMatch finishedMatch = FinishedMatch.fromOngoingMatch(ongoingMatch);
+            finishedMatchService.save(finishedMatch);
+            ongoingMatchService.removeMatch(matchId);
+            resp.sendRedirect(String.format("%s/main", req.getContextPath()));
+        } else {
+            resp.sendRedirect(String.format("%s/match-score?id=%s", req.getContextPath(), matchId));
+        }
     }
 }

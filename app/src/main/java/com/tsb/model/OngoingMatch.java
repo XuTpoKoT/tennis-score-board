@@ -25,10 +25,10 @@ public class OngoingMatch {
         return score.isWinning();
     }
 
-//    public Player getWinner() {
-//        return switch (score.getWinner()) {
-//            case PLAYER_1 -> player1;
-//            case PLAYER_2 -> player2;
-//        };
-//    }
+    public Player getWinner() {
+        return switch (score.getWinner()) {
+            case PLAYER_1 -> player1;
+            case PLAYER_2 -> player2;
+        };
+    }
 }
