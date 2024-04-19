@@ -1,6 +1,6 @@
 package com.tsb.repo;
 
-import com.tsb.entity.Player;
+import com.tsb.model.entity.Player;
 
 import java.util.Optional;
 

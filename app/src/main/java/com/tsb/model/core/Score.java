@@ -1,4 +1,4 @@
-package com.tsb.model;
+package com.tsb.model.core;
 
 import java.util.HashMap;
 import java.util.Map;

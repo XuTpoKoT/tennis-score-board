@@ -1,9 +1,9 @@
 package com.tsb.service;
 
-import com.tsb.entity.Player;
+import com.tsb.model.entity.Player;
 import com.tsb.exception.MatchNotFoundException;
-import com.tsb.model.OngoingMatch;
-import com.tsb.model.PlayerNumber;
+import com.tsb.model.core.OngoingMatch;
+import com.tsb.model.core.PlayerNumber;
 import com.tsb.repo.PlayerRepo;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

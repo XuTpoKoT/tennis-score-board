@@ -1,6 +1,6 @@
-package com.tsb.entity;
+package com.tsb.model.entity;
 
-import com.tsb.model.OngoingMatch;
+import com.tsb.model.core.OngoingMatch;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.tsb.entity;
+package com.tsb.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

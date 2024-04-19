@@ -1,6 +1,6 @@
-package com.tsb.model;
+package com.tsb.model.core;
 
-import com.tsb.entity.Player;
+import com.tsb.model.entity.Player;
 import lombok.Getter;
 
 @Getter

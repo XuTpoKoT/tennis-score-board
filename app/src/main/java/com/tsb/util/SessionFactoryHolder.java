@@ -1,7 +1,7 @@
 package com.tsb.util;
 
-import com.tsb.entity.FinishedMatch;
-import com.tsb.entity.Player;
+import com.tsb.model.entity.FinishedMatch;
+import com.tsb.model.entity.Player;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

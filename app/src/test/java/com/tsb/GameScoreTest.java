@@ -3,8 +3,8 @@
  */
 package com.tsb;
 
-import com.tsb.model.GameScore;
-import com.tsb.model.PlayerNumber;
+import com.tsb.model.core.GameScore;
+import com.tsb.model.core.PlayerNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

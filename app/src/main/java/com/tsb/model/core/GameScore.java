@@ -1,4 +1,4 @@
-package com.tsb.model;
+package com.tsb.model.core;
 
 import com.tsb.exception.MatchIntervalIsFinishedException;
 import lombok.AllArgsConstructor;
@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-import static com.tsb.model.PlayerNumber.PLAYER_1;
-import static com.tsb.model.PlayerNumber.PLAYER_2;
+import static com.tsb.model.core.PlayerNumber.PLAYER_1;
+import static com.tsb.model.core.PlayerNumber.PLAYER_2;
 
 @AllArgsConstructor
 @NoArgsConstructor

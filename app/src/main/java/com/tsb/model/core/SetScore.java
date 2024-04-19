@@ -1,9 +1,9 @@
-package com.tsb.model;
+package com.tsb.model.core;
 
 import java.util.List;
 
-import static com.tsb.model.PlayerNumber.PLAYER_1;
-import static com.tsb.model.PlayerNumber.PLAYER_2;
+import static com.tsb.model.core.PlayerNumber.PLAYER_1;
+import static com.tsb.model.core.PlayerNumber.PLAYER_2;
 
 public class SetScore extends Score {
     public final static int DEFAULT_GAMES_TO_WIN = 6;

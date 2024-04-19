@@ -1,15 +1,15 @@
 package com.tsb.controller;
 
-import com.tsb.entity.FinishedMatch;
-import com.tsb.model.MatchScore;
-import com.tsb.model.OngoingMatch;
-import com.tsb.model.PlayerNumber;
-import com.tsb.service.FinishedMatchService;
-import com.tsb.service.FinishedMatchServiceImpl;
+import com.tsb.model.entity.FinishedMatch;
+import com.tsb.model.core.MatchScore;
+import com.tsb.model.core.OngoingMatch;
+import com.tsb.model.core.PlayerNumber;
+import com.tsb.service.FinishedMatchesService;
+import com.tsb.service.FinishedMatchesServiceImpl;
 import com.tsb.service.OngoingMatchService;
 import com.tsb.service.OngoingMatchServiceImpl;
 import com.tsb.util.JspPath;
-import com.tsb.util.ValidParameter;
+import com.tsb.util.ParameterValidator;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,11 +23,11 @@ import java.util.UUID;
 @WebServlet(urlPatterns = "/match-score")
 public class MatchScoreController extends HttpServlet {
     private final OngoingMatchService ongoingMatchService = OngoingMatchServiceImpl.INSTANCE;
-    private final FinishedMatchService finishedMatchService = FinishedMatchServiceImpl.INSTANCE;
+    private final FinishedMatchesService finishedMatchesService = FinishedMatchesServiceImpl.INSTANCE;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UUID id = ValidParameter.getValidId(req, "id");
+        UUID id = ParameterValidator.getUUID(req, "id");
         OngoingMatch match = ongoingMatchService.findById(id);
         MatchScore matchScore = match.getScore();
         req.setAttribute("id", id);
@@ -47,7 +47,7 @@ public class MatchScoreController extends HttpServlet {
         OngoingMatch ongoingMatch = ongoingMatchService.findById(matchId);
         if (ongoingMatch.isFinished()) {
             FinishedMatch finishedMatch = FinishedMatch.fromOngoingMatch(ongoingMatch);
-            finishedMatchService.save(finishedMatch);
+            finishedMatchesService.save(finishedMatch);
             ongoingMatchService.removeMatch(matchId);
             resp.sendRedirect(String.format("%s/main", req.getContextPath()));
         } else {

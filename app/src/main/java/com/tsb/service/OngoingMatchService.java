@@ -1,7 +1,7 @@
 package com.tsb.service;
 
-import com.tsb.model.OngoingMatch;
-import com.tsb.model.PlayerNumber;
+import com.tsb.model.core.OngoingMatch;
+import com.tsb.model.core.PlayerNumber;
 
 import java.util.Collection;
 import java.util.UUID;

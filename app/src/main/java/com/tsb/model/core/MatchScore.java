@@ -1,11 +1,11 @@
-package com.tsb.model;
+package com.tsb.model.core;
 
 import com.tsb.exception.MatchIsNotFinishedException;
 
 import java.util.List;
 
-import static com.tsb.model.PlayerNumber.PLAYER_1;
-import static com.tsb.model.PlayerNumber.PLAYER_2;
+import static com.tsb.model.core.PlayerNumber.PLAYER_1;
+import static com.tsb.model.core.PlayerNumber.PLAYER_2;
 
 public class MatchScore extends Score {
     public final static int DEFAULT_SETS_TO_WIN = 2;
