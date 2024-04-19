@@ -1,22 +1,26 @@
 package com.tsb.service;
 
-import com.tsb.model.entity.Player;
 import com.tsb.exception.MatchNotFoundException;
+import com.tsb.mapper.MatchMapper;
 import com.tsb.model.core.OngoingMatch;
 import com.tsb.model.core.PlayerNumber;
+import com.tsb.model.dto.OngoingMatchDto;
+import com.tsb.model.entity.Player;
 import com.tsb.repo.PlayerRepo;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import org.mapstruct.factory.Mappers;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Log
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class OngoingMatchServiceImpl implements OngoingMatchService {
-    public static final OngoingMatchServiceImpl INSTANCE = new OngoingMatchServiceImpl();
+public class OngoingMatchesServiceImpl implements OngoingMatchesService {
+    public static final OngoingMatchesServiceImpl INSTANCE = new OngoingMatchesServiceImpl();
+    private final MatchMapper matchMapper = Mappers.getMapper(MatchMapper.class);
     private final PlayerRepo playerRepo = new PlayerRepo();
     private final ConcurrentHashMap<UUID, OngoingMatch> matchMap = new ConcurrentHashMap<>();
     @Override
@@ -56,7 +60,8 @@ public class OngoingMatchServiceImpl implements OngoingMatchService {
     }
 
     @Override
-    public Collection<OngoingMatch> findAll() {
-        return matchMap.values();
+    public List<OngoingMatchDto> findAll() {
+        return matchMap.entrySet().stream().map(es -> matchMapper.fromOngoingMatch(es.getKey(), es.getValue()))
+            .toList();
     }
 }

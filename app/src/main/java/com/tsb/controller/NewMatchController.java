@@ -1,7 +1,7 @@
 package com.tsb.controller;
 
-import com.tsb.service.OngoingMatchService;
-import com.tsb.service.OngoingMatchServiceImpl;
+import com.tsb.service.OngoingMatchesService;
+import com.tsb.service.OngoingMatchesServiceImpl;
 import com.tsb.util.JspPath;
 import com.tsb.util.ParameterValidator;
 import jakarta.servlet.ServletException;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @WebServlet(urlPatterns = "/new-match")
 public class NewMatchController extends HttpServlet {
 
-    private final OngoingMatchService ongoingMatchService = OngoingMatchServiceImpl.INSTANCE;
+    private final OngoingMatchesService ongoingMatchesService = OngoingMatchesServiceImpl.INSTANCE;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class NewMatchController extends HttpServlet {
         String firstPlayerName = ParameterValidator.getPlayerName(req, "first_player");
         String secondPlayerName = ParameterValidator.getPlayerName(req, "second_player");
 
-        UUID matchId = ongoingMatchService.startMatch(firstPlayerName, secondPlayerName);
+        UUID matchId = ongoingMatchesService.startMatch(firstPlayerName, secondPlayerName);
         resp.sendRedirect(String.format("%s/match-score?id=%s", req.getContextPath(), matchId));
     }
 }

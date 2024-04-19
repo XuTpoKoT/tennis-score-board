@@ -1,7 +1,7 @@
 package com.tsb.controller;
 
 import com.tsb.exception.EntityNotFoundException;
-import com.tsb.mapper.FinishedMatchMapper;
+import com.tsb.mapper.MatchMapper;
 import com.tsb.model.dto.FinishedMatchDto;
 import com.tsb.service.FinishedMatchesService;
 import com.tsb.service.FinishedMatchesServiceImpl;
@@ -24,7 +24,7 @@ import java.util.Objects;
 public class FinishedMatchesController extends HttpServlet {
 
     private final FinishedMatchesService finishedMatchesService = FinishedMatchesServiceImpl.INSTANCE;
-    private final FinishedMatchMapper matchMapper = Mappers.getMapper(FinishedMatchMapper.class);
+    private final MatchMapper matchMapper = Mappers.getMapper(MatchMapper.class);
     private final int DEFAULT_PAGE_SIZE = 6;
 
     @Override

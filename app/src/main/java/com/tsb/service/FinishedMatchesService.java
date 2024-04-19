@@ -2,7 +2,6 @@ package com.tsb.service;
 
 import com.tsb.model.entity.FinishedMatch;
 
-import java.util.Arrays;
 import java.util.List;
 
 public interface FinishedMatchesService {
