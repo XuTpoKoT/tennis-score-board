@@ -10,6 +10,21 @@ services:
       - tsb_dbdata:/var/lib/postgresql/data
     ports:
       - "${DB_PORT}:${DB_PORT}"
+  flyway:
+    container_name: tsb_flyway
+    image: flyway/flyway:10.14
+    command: -url="jdbc:postgresql://postgres:${DB_PORT}/${POSTGRES_DB}" -user=${POSTGRES_USER} -password=${POSTGRES_PASSWORD} -connectRetries=60 migrate
+    volumes:
+      - ./src/main/resources/migration:/flyway/sql
+    depends_on:
+      - postgres
+  server:
+    container_name: tsb_server
+    depends_on:
+      - flyway
+    build: .
+    ports:
+      - ${API_PORT}:8080
 volumes:
   tsb_dbdata:
 
