@@ -37,3 +37,11 @@ docker compose up -d
 
 <a name="design"></a>
 ## Дизайн
+**Регистрация нового матча**
+![auth](./img/new-match.png)
+
+**Табло счёта идущего матча**
+![score](./img/score.png)
+
+**Страница завершенных матчей**
+![finished](./img/finished-matches.png)
