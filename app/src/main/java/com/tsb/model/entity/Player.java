@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Entity
-@Table(name = "Player", schema = "public")
+@Table(name = "Player", schema = "public", uniqueConstraints=@UniqueConstraint(columnNames={"name"}))
 public class Player {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter

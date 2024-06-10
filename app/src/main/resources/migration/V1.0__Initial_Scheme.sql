@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS public.Player (
+CREATE TABLE public.Player (
     id     serial PRIMARY KEY
-    , name text    NOT NULL
+    , name text   UNIQUE NOT NULL
 );
