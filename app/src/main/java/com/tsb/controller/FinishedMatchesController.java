@@ -12,7 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 @WebServlet(urlPatterns = "/matches")
-@Log
+@Slf4j
 public class FinishedMatchesController extends HttpServlet {
 
     private final FinishedMatchesService finishedMatchesService = FinishedMatchesServiceImpl.INSTANCE;

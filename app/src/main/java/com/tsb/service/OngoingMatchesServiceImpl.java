@@ -9,15 +9,15 @@ import com.tsb.model.entity.Player;
 import com.tsb.repo.PlayerRepo;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Log
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Slf4j
 public class OngoingMatchesServiceImpl implements OngoingMatchesService {
     public static final OngoingMatchesServiceImpl INSTANCE = new OngoingMatchesServiceImpl();
     private final MatchMapper matchMapper = Mappers.getMapper(MatchMapper.class);

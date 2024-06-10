@@ -17,19 +17,32 @@ plugins {
 repositories {
     mavenCentral()
 }
-
+ext {
+    lombokVersion = '1.18.28'
+    log4jVersion = '2.23.1'
+    mapstructVersion = '1.5.5.Final'
+}
 dependencies {
-    implementation 'org.hibernate.orm:hibernate-core:6.1.7.Final'
-    implementation 'org.postgresql:postgresql:42.7.2'
-    implementation 'org.projectlombok:lombok:1.18.28'
-    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-
+    // web
     providedCompile 'jakarta.servlet:jakarta.servlet-api:6.0.0'
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
 
-    annotationProcessor 'org.projectlombok:lombok:1.18.28'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    // db
+    implementation 'org.hibernate.orm:hibernate-core:6.1.7.Final'
+    implementation 'org.postgresql:postgresql:42.7.2'
+
+    // logging
+    implementation 'org.slf4j:slf4j-api:2.0.13'
+    implementation "org.apache.logging.log4j:log4j-slf4j2-impl:$log4jVersion"
+    implementation "org.apache.logging.log4j:log4j-api:$log4jVersion"
+    implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
+
+    implementation "org.projectlombok:lombok:$lombokVersion"
+    implementation "org.mapstruct:mapstruct:$mapstructVersion"
+
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -49,10 +62,7 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
-//jar {
-//    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-//}
-//tasks.withType(Copy).all { duplicatesStrategy 'exclude' }
+
 tasks.named('test') {
     useJUnitPlatform()
 }

@@ -9,13 +9,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/ongoing-matches")
-@Log
+@Slf4j
 public class OngoingMatchesController extends HttpServlet {
 
     private final OngoingMatchesService ongoingMatchesService = OngoingMatchesServiceImpl.INSTANCE;
